@@ -58,5 +58,5 @@ gem 'actionview', '>= 5.2.2.1'
 
 #from railstutorial
 gem 'bootstrap-will_paginate', '1.0.0'
-gem 'bootstrap-sass',          '3.3.7'
+gem 'bootstrap-sass',          '3.4.1'
 gem 'jquery-rails',            '4.3.1'
