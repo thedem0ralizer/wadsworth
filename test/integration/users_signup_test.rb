@@ -6,9 +6,9 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_no_difference 'User.count' do
       assert_select 'form[action="/signup"]'
       post signup_path, params: { user: { name: '',
-                                        email: 'bad@email',
-                                     password: 'too',
-                        password_confirmation: 'short' } }
+                                         email: 'bad@email',
+                                      password: 'too',
+                         password_confirmation: 'short' } }
     end
     assert_template 'users/new'
     assert_select 'div#error_explanation'
@@ -19,12 +19,13 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     get signup_path
     assert_difference 'User.count', 1 do
       post signup_path, params: { user: { name: 'rails user',
-                                        email: 'example@railstutorial.org',
-                                     password: 'odin1025',
-                        password_confirmation: 'odin1025' } }
+                                         email: 'example@railstutorial.org',
+                                      password: 'odin1025',
+                         password_confirmation: 'odin1025' } }
     end
     follow_redirect!
     assert_template 'users/show'
+    assert is_logged_in?
     assert_select 'div.alert-success'
   end
 end
