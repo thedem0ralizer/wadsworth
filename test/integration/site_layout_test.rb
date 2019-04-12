@@ -2,7 +2,7 @@ require 'test_helper'
 
 class SiteLayoutTest < ActionDispatch::IntegrationTest
 
-  test "layout links" do
+  test "layout links while logged out" do #add steps to visit every link in header/footer/etc...
     get root_path
     assert_template 'static_pages/home'
     assert_select 'a[href=?]', root_path
@@ -14,6 +14,9 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select 'title', full_title("Contact")
     get signup_path
     assert_select 'title', full_title("Sign up")
+  end
+
+  test 'layout links while logged in' do
   end
 
 end
